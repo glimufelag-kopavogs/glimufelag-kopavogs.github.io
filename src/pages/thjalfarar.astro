@@ -1,9 +1,28 @@
 ---
 import Base from '../layouts/Base.astro';
-const thjalfarar = [
-  { nafn: 'Daði Steinn Brynjarsson', hlutverk: 'Yfirþjálfari BJJ', lina: 'NoGi og byrjendanámskeið. Stofnaði BJJ-deildina á Smiðjuvegi 28.' },
-  { nafn: 'Pétur Óskarsson', hlutverk: 'Þjálfari', lina: 'Gi-tímar fullorðinna.' },
-  { nafn: 'Eiður Sigurðsson', hlutverk: 'Yfirþjálfari ungmennastarfs', lina: 'BJJ fyrir 3–17 ára.' },
+const hlutar = [
+  { titill: 'Fullorðinsstarf', thjalfarar: [
+    { nafn: 'Daði Steinn Brynjarsson', hlutverk: 'Yfirþjálfari BJJ', lina: 'NoGi og byrjendanámskeið. Stofnaði BJJ-deildina á Smiðjuvegi 28.' },
+    { nafn: 'Pétur Óskarsson', hlutverk: 'Þjálfari', lina: 'Gi-tímar fullorðinna.' },
+  ]},
+  { titill: 'Byrjendatímar', thjalfarar: [
+    { nafn: 'Daði Steinn Brynjarsson', hlutverk: 'Yfirþjálfari' },
+    { nafn: 'Pálína Ósk Lárusdóttir Brown', hlutverk: 'Þjálfari' },
+  ]},
+  { titill: 'Kvennastarf (Gelluglíma)', thjalfarar: [
+    { nafn: 'Ólöf Embla Kristinsdóttir', hlutverk: 'Þjálfari' },
+    { nafn: 'Þórhanna Inga Ómarsdóttir', hlutverk: 'Þjálfari' },
+    { nafn: 'Kolka B. Hjaltadóttir', hlutverk: 'Þjálfari' },
+  ]},
+  { titill: 'Ungmennastarf', thjalfarar: [
+    { nafn: 'Eiður Sigurðsson', hlutverk: 'Yfirþjálfari ungmennastarfs', lina: 'Allir hópar.' },
+    { nafn: 'Úlfar Kári R Fitzgerald', hlutverk: 'Yfirþjálfari', lina: '3–5 og 6–8 ára.' },
+    ...['Alexander Þór H. Davíðsson', 'Daði Hrafn Yu Björgvinsson', 'Helgi Bjarg Einarsson', 'Jónathan Logi Avraham', 'Elmar Aron Elmarsson']
+      .map((nafn) => ({ nafn, hlutverk: 'Þjálfari', lina: '3–5 og 6–8 ára.' })),
+    { nafn: 'Guðmundur Steinn Gíslason', hlutverk: 'Þjálfari', lina: '9–13, 14–17 og afrekshópar.' },
+    { nafn: 'Ísar Þór Helguson', hlutverk: 'Aðstoðarmaður', lina: '3–5 og 6–8 ára.' },
+    { nafn: 'Úlfur Már Ragnarsson Kruger', hlutverk: 'Aðstoðarmaður', lina: '3–5 og 6–8 ára.' },
+  ]},
 ];
 ---
 <Base title="Þjálfarar" description="Þjálfarar Glímufélags Kópavogs (GFK).">
@@ -12,15 +31,20 @@ const thjalfarar = [
       <h1>Þjálfarar</h1>
     </div>
   </section>
-  <section class="section">
-    <div class="container grid grid-3">
-      {thjalfarar.map((t) => (
-        <article class="card coach">
-          <h2 class="coach-name">{t.nafn}</h2>
-          <div class="coach-role">{t.hlutverk}</div>
-          <p class="muted small" style="margin:0">{t.lina}</p>
-        </article>
-      ))}
-    </div>
-  </section>
+  {hlutar.map((h) => (
+    <section class="section" style="padding-block:2rem">
+      <div class="container">
+        <h2 style="margin-bottom:1rem">{h.titill}</h2>
+        <div class="grid grid-3">
+          {h.thjalfarar.map((t) => (
+            <article class="card coach">
+              <h3 class="coach-name">{t.nafn}</h3>
+              <div class="coach-role">{t.hlutverk}</div>
+              {t.lina && <p class="muted small" style="margin:0">{t.lina}</p>}
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
 </Base>
