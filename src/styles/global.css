@@ -303,3 +303,61 @@ h3 { font-size: 1.2rem; }
 @media (min-width: 761px) {
   .wk-parts li { font-size: .66rem; column-gap: 5px; }
 }
+
+/* ===== GFK hönnunarkerfi (Claude design): letur, þétt horn, 2px línur, gegnheilir fletir ===== */
+:root {
+  --font-display: "Barlow Semi Condensed", "Barlow", system-ui, sans-serif;
+  --font-body: "Barlow", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --r-btn: 3px; --r-card: 8px; --radius: 8px;
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1); --dur: 160ms;
+  --keyline: 2px;
+}
+body { font-family: var(--font-body); line-height: 1.55; }
+h1, h2, h3, h4, .values, .stat, .price, .price-sm, .wk-head, .day h3, .year-head, .eyebrow, .coach-name {
+  font-family: var(--font-display); font-style: italic; text-transform: uppercase; letter-spacing: 0;
+}
+h1 { font-weight: 800; line-height: .95; }
+h2 { font-weight: 800; line-height: 1; }
+h3, h4 { font-weight: 700; }
+.values { font-weight: 800; letter-spacing: -0.01em; }
+.eyebrow { letter-spacing: .08em; }
+/* hreyfingar: stuttar og hraðar */
+a, .btn, .card, .news-item, .group-card, .wk-s, .faq details { transition: color var(--dur) var(--ease), background-color var(--dur) var(--ease), border-color var(--dur) var(--ease), transform var(--dur) var(--ease), filter var(--dur) var(--ease); }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+/* haus: gegnheill svartur með 2px bleikri línu */
+.site-header { background: #0b0b0d; backdrop-filter: none; border-bottom: var(--keyline) solid var(--accent); }
+.nav-desktop a:not(.btn) { border-radius: 0; font-weight: 600; text-transform: uppercase; font-size: .85rem; letter-spacing: .04em; border-bottom: var(--keyline) solid transparent; }
+.nav-desktop a:not(.btn):hover, .nav-desktop a.active { background: transparent; color: var(--accent); border-bottom-color: var(--accent); }
+.nav-toggle summary { border-radius: var(--r-btn) !important; border-width: var(--keyline) !important; }
+/* takkar */
+.btn { border-radius: var(--r-btn); border-width: var(--keyline); font-family: var(--font-display); font-style: italic; font-weight: 700; text-transform: uppercase; letter-spacing: .03em; }
+.btn:hover { filter: brightness(1.08); }
+.btn:active { transform: translateY(1px); }
+.btn-accent:hover { background: var(--accent); border-color: var(--accent); }
+.btn-ghost { border-color: var(--text); }
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+/* spjöld */
+.card, .news-item, .day, .event, .faq details, .placeholder-art, .notice, .wk-s { border-radius: var(--r-card); }
+.wk-s { border-radius: 6px; }
+.photo { border-radius: 10px; }
+.card-accent { box-shadow: none; border-left: 4px solid var(--accent); }
+.group-card:hover, .news-item:hover { border-color: var(--accent); transform: translateY(-3px); }
+.wk-head { border-bottom-width: var(--keyline); border-bottom-color: var(--accent); font-size: .95rem; color: var(--text); }
+.value-icon { border-radius: var(--r-btn); }
+/* gegnheilir fletir í stað litaskipta */
+.page-head { background: #0b0b0d; border-bottom: var(--keyline) solid var(--line); position: relative; overflow: hidden; }
+.hero { background: #0b0b0d; border-bottom: var(--keyline) solid var(--accent); }
+.hero::after { content: none; }
+.photo, .placeholder-art { background: #16181d; }
+.section-alt { background: var(--bg-2); border-top-width: var(--keyline); border-bottom-width: var(--keyline); }
+/* stóra GFK-vatnsmerkið á dökkum hero-flötum */
+.hero::before, .page-head::before {
+  content: ""; position: absolute; top: 50%; right: -6%; width: min(70vw, 900px); aspect-ratio: 3.26 / 1;
+  transform: translateY(-50%); background: url("/gfk-logo-white.svg") no-repeat right center / contain;
+  opacity: .06; pointer-events: none;
+}
+.page-head::before { width: min(60vw, 640px); right: -4%; }
+.page-head .container { position: relative; z-index: 1; }
+.site-footer { background: #0b0b0d; border-top: var(--keyline) solid var(--accent); }
+.tag-review, .chips li { border-width: var(--keyline); }
