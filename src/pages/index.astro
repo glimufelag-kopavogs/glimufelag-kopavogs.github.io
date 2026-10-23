@@ -1,54 +1,57 @@
 ---
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
-import prices from '../data/prices.json';
 import schedule from '../data/schedule.json';
+import motData from '../data/mot.json';
+import site from '../data/site.json';
 const posts = (await getCollection('frettir', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
 const fmt = (d: Date) => d.toLocaleDateString('is-IS', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
-const bn = prices.byrjendanamskeid;
-// Reiknað úr æfingatöflunni
-const bjjTimar = schedule.fullordnir.length + schedule.ungmenni.length;
+const uh = schedule.ungmennahopar;
 const hopar = [
-  { heiti: 'Byrjendur', lina: 'Þri og fim kl. 19:30', href: '/verdskra#byrjendanamskeid' },
-  { heiti: 'Fullorðnir', lina: 'Gi og NoGi, alla daga', href: '/aefingatafla' },
-  { heiti: '3–17 ára', lina: 'Fjórir aldurshópar', href: '/ungmennastarf' },
-  { heiti: 'Afrekshópur', lina: 'Eftir boði þjálfara', href: '/ungmennastarf#afrekshopur' },
+  { heiti: 'Börn', aldur: '3–8 ára', lina: `${uh[0].hopur} og ${uh[1].hopur}. Gi og NoGi.`, href: '/ungmennastarf#hopar' },
+  { heiti: 'Ungmenni', aldur: '9–17 ára', lina: `${uh[2].hopur} og ${uh[3].hopur}. Gi og NoGi.`, href: '/ungmennastarf#hopar' },
+  { heiti: 'Fullorðnir', aldur: 'Allir tímar', lina: 'Gi og NoGi, alla daga', href: '/aefingatafla' },
+  { heiti: 'Byrjendur', aldur: 'Byrjendanámskeið', lina: 'Þri og fim kl. 19:30', href: '/verdskra#byrjendanamskeid' },
 ];
+const timar = [
+  ...schedule.fullordnir.map((t) => ({ d: t.dagur, fra: t.fra, til: t.til, h: t.timi, t: t.tegund, hopur: 'Fullorðnir' })),
+  ...schedule.ungmenni.map((t) => ({ d: t.dagur, fra: t.fra, til: t.til, h: t.timi, t: t.tegund, hopur: 'Krakkar' })),
+];
+// Lokadagsetning móts reiknuð úr textanum (síðasti dagur + mánuður + ár)
+const man = ['janúar','febrúar','mars','apríl','maí','júní','júlí','ágúst','september','október','nóvember','desember'];
+const endir = (s: string) => {
+  const m = [...s.matchAll(/(\d{1,2})\.\s*([a-zéáíóúýþæöð]+)?\s*(\d{4})?/gi)];
+  const ar = s.match(/\d{4}/)?.[0];
+  const last = m.at(-1);
+  if (!last || !ar) return '';
+  const mi = man.indexOf((last[2] || [...s.matchAll(/([a-zéáíóúýþæöð]+)\s+\d{4}/gi)].at(-1)?.[1] || '').toLowerCase());
+  if (mi < 0) return '';
+  return `${ar}-${String(mi + 1).padStart(2, '0')}-${last[1].padStart(2, '0')}`;
+};
+const mot = motData.mot.map((m) => ({ ...m, endir: endir(m.dags) }));
 ---
 <Base title="Forsíða">
-  <section class="hero">
+  <section class="hero hero-home">
+    <!-- MYNDARAUF: settu æfingamynd í public/forsida/hero.jpg og bættu style="--hero-img:url(/forsida/hero.jpg)" við .hero-home -->
     <div class="container">
       <h1>Uppgjafarglíma fyrir <span class="hl">alla</span>.</h1>
       <p class="lead">Brasilískt jiu jitsu í Kópavogi. Gi og NoGi.</p>
       <div class="btn-row">
-        <a class="btn btn-accent" href="/hafa-samband#skraning">Skráðu þig</a>
-        <a class="btn btn-ghost" href="/aefingatafla">Stundatafla</a>
-      </div>
-      <div class="stats">
-        <div><div class="stat">{bjjTimar}</div><div class="stat-label">tímar á viku</div></div>
-        <div><div class="stat">3–17</div><div class="stat-label">ára krakkar</div></div>
-        <div><div class="stat">2</div><div class="stat-label">glímuvellir</div></div>
-        <div><div class="stat">7</div><div class="stat-label">æfingasvæði</div></div>
+        <a class="btn btn-accent" href={site.skraning_almenn} target="_blank" rel="noopener">Skrá á æfingu</a>
+        <a class="btn btn-ghost" href="/aefingatafla">Æfingatafla</a>
       </div>
     </div>
   </section>
-
-  <div class="container"><div class="photo photo-wide" aria-hidden="true">Mynd</div></div>
 
   <section class="section">
-    <div class="container">
-      <p class="values">Árangur. <span>Samfélag.</span> Gæði.</p>
-    </div>
-  </section>
-
-  <section class="section section-alt">
     <div class="container">
       <h2>Finndu hópinn þinn</h2>
       <div class="grid grid-4 cards-compact">
         {hopar.map((h) => (
           <a class="card group-card" href={h.href}>
+            <div class="meta">{h.aldur}</div>
             <h3>{h.heiti}</h3>
             <div class="meta">{h.lina}</div>
           </a>
@@ -57,53 +60,15 @@ const hopar = [
     </div>
   </section>
 
-  <section class="section">
-    <div class="container split">
-      <div>
-        <h2>Byrjaðu hér</h2>
-        <p class="line">Byrjendanámskeið: 4 vikur, {bn.verd}</p>
-        <a class="btn btn-accent" href="/hafa-samband#skraning">Skráðu þig</a>
-      </div>
-      <div class="photo" aria-hidden="true">Mynd</div>
-    </div>
-  </section>
-
   <section class="section section-alt">
     <div class="container">
-      <h2>Stigahæst í Dublin</h2>
-      <p class="line">Grappling Industries Dublin 2026</p>
-      <div class="grid grid-4 cards-compact">
-        <div class="card"><div class="stat">20</div><div class="stat-label">gull</div></div>
-        <div class="card"><div class="stat">8</div><div class="stat-label">silfur</div></div>
-        <div class="card"><div class="stat">8</div><div class="stat-label">brons</div></div>
-        <div class="card"><div class="stat">1.</div><div class="stat-label">stigahæsta lið</div></div>
-      </div>
+      <h2 id="naestu-titill">Næstu æfingar</h2>
+      <div class="news-list" id="naestu-aefingar"><p class="muted">Sjá <a href="/aefingatafla">æfingatöflu</a>.</p></div>
+      <a class="btn btn-ghost" href="/aefingatafla" style="margin-top:28px">Öll æfingataflan</a>
     </div>
   </section>
 
   <section class="section">
-    <div class="container split">
-      <div>
-        <h2>Spurt og svarað</h2>
-      </div>
-      <div class="faq">
-        <details>
-          <summary>Þarf ég reynslu?</summary>
-          <p>Nei, byrjendanámskeiðið er gert fyrir algjöra byrjendur.</p>
-        </details>
-        <details>
-          <summary>Er þetta hættulegt?</summary>
-          <p>Engin högg eða spörk, og bannað að beygla fingur eða pota í augu.</p>
-        </details>
-        <details>
-          <summary>Frá hvaða aldri?</summary>
-          <p>Krakkar geta byrjað 3 ára.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-alt">
     <div class="container">
       <h2>Nýjast</h2>
       <div class="news-list">
@@ -117,4 +82,53 @@ const hopar = [
       <a class="btn btn-ghost" href="/frettir/" style="margin-top:28px">Allar fréttir</a>
     </div>
   </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2>Næstu mót</h2>
+      <div class="news-list" id="mot-listi">
+        {mot.map((m) => (
+          <a class="news-item mot-item" href="/mot" data-endir={m.endir}>
+            <time>{m.dags}</time>
+            <div><h3>{m.heiti}</h3>{(m.lysing || m.athugasemd) && <p>{[m.lysing, m.athugasemd].filter(Boolean).join(' ')}</p>}</div>
+          </a>
+        ))}
+      </div>
+      <p class="muted" id="engin-mot" hidden>Engin mót skráð í bili.</p>
+      <a class="btn btn-ghost" href="/mot" style="margin-top:28px">Öll mót</a>
+    </div>
+  </section>
+
+  <script is:inline define:vars={{ timar }}>
+    const dagar = ['Sunnudagur','Mánudagur','Þriðjudagur','Miðvikudagur','Fimmtudagur','Föstudagur','Laugardagur'];
+    const p = Object.fromEntries(new Intl.DateTimeFormat('en-GB', { timeZone: 'Atlantic/Reykjavik', weekday: 'short', hour: '2-digit', minute: '2-digit', year: 'numeric', month: '2-digit', day: '2-digit', hourCycle: 'h23' }).formatToParts(new Date()).map((x) => [x.type, x.value]));
+    const wd = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(p.weekday);
+    const nu = `${p.hour}:${p.minute}`;
+    const idag = `${p.year}-${p.month}-${p.day}`;
+    let listi = [], titill = 'Næstu æfingar';
+    for (let i = 0; i < 7 && !listi.length; i++) {
+      const dagur = dagar[(wd + i) % 7];
+      listi = timar.filter((t) => t.d === dagur && (i > 0 || t.til > nu)).sort((a, b) => a.fra.localeCompare(b.fra));
+      if (listi.length) titill = i === 0 ? 'Æfingar í dag' : i === 1 ? 'Æfingar á morgun' : `Æfingar á ${dagur.toLowerCase()}`;
+    }
+    const el = document.getElementById('naestu-aefingar');
+    if (listi.length) {
+      document.getElementById('naestu-titill').textContent = titill;
+      el.innerHTML = '';
+      for (const t of listi) {
+        const a = document.createElement('a');
+        a.className = 'news-item'; a.href = '/aefingatafla';
+        a.innerHTML = `<time>${t.fra}–${t.til}</time><div><h3></h3><p></p></div>`;
+        a.querySelector('h3').textContent = `${t.hopur}: ${t.h}`;
+        a.querySelector('p').textContent = t.t;
+        el.appendChild(a);
+      }
+    }
+    let synileg = 0;
+    document.querySelectorAll('.mot-item').forEach((m) => {
+      const e = m.dataset.endir;
+      if (e && e < idag) m.hidden = true; else synileg++;
+    });
+    if (!synileg) document.getElementById('engin-mot').hidden = false;
+  </script>
 </Base>

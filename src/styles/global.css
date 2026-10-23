@@ -361,3 +361,9 @@ a, .btn, .card, .news-item, .group-card, .wk-s, .faq details { transition: color
 .page-head .container { position: relative; z-index: 1; }
 .site-footer { background: #0b0b0d; border-top: var(--keyline) solid var(--accent); }
 .tag-review, .chips li { border-width: var(--keyline); }
+
+/* Forsíða v2: myndarauf í hero (sett með --hero-img) */
+.hero-home { min-height: 520px; display: flex; align-items: center; }
+.hero-home[style*="--hero-img"] { background: linear-gradient(90deg, rgba(14,16,19,.9), rgba(14,16,19,.45)), var(--hero-img) center/cover no-repeat; }
+.mot-item[hidden] { display: none; }
+.site-footer a { color: inherit; }
