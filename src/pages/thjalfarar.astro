@@ -34,17 +34,46 @@ const hlutar = [
   {hlutar.map((h) => (
     <section class="section" style="padding-block:2rem">
       <div class="container">
-        <h2 style="margin-bottom:1rem">{h.titill}</h2>
-        <div class="grid grid-3">
-          {h.thjalfarar.map((t) => (
-            <article class="card coach">
-              <h3 class="coach-name">{t.nafn}</h3>
-              <div class="coach-role">{t.hlutverk}</div>
-              {t.lina && <p class="muted small" style="margin:0">{t.lina}</p>}
-            </article>
-          ))}
-        </div>
+        <details class="coach-group" open>
+          <summary><h2>{h.titill}</h2><span class="coach-count">{h.thjalfarar.length}</span><span class="chev" aria-hidden="true"></span></summary>
+          <div class="grid grid-3">
+            {h.thjalfarar.map((t) => (
+              <article class="card coach">
+                <h3 class="coach-name">{t.nafn}</h3>
+                <div class="coach-role">{t.hlutverk}</div>
+                {t.lina && <p class="muted small" style="margin:0">{t.lina}</p>}
+              </article>
+            ))}
+          </div>
+        </details>
       </div>
     </section>
   ))}
+  <style>
+    .coach-group > summary { list-style: none; display: flex; align-items: center; gap: .6rem; margin-bottom: 1rem; }
+    .coach-group > summary::-webkit-details-marker { display: none; }
+    .coach-group > summary h2 { margin: 0; }
+    .coach-count, .chev { display: none; }
+    @media (min-width: 769px) {
+      .coach-group > summary { pointer-events: none; cursor: default; }
+    }
+    @media (max-width: 768px) {
+      .coach-group { border: 1px solid rgba(127,127,127,.25); border-radius: 14px; overflow: hidden; }
+      .coach-group > summary { cursor: pointer; margin: 0; padding: 1rem 1.1rem; min-height: 56px; -webkit-tap-highlight-color: transparent; }
+      .coach-group > summary h2 { font-size: 1.25rem; flex: 1; }
+      .coach-count { display: inline-flex; align-items: center; justify-content: center; min-width: 1.8rem; height: 1.8rem; padding: 0 .5rem; border-radius: 999px; background: #ff3d81; color: #fff; font-size: .85rem; font-weight: 700; }
+      .chev { display: block; width: .7rem; height: .7rem; border-right: 2.5px solid currentColor; border-bottom: 2.5px solid currentColor; transform: rotate(45deg); transition: transform .2s; margin: 0 .3rem .3rem; }
+      .coach-group[open] > summary .chev { transform: rotate(-135deg); margin-top: .4rem; margin-bottom: 0; }
+      .coach-group > .grid { padding: 0 1rem 1rem; }
+    }
+  </style>
+  <script is:inline>
+    (() => {
+      const mq = window.matchMedia('(min-width: 769px)');
+      const set = () => document.querySelectorAll('.coach-group').forEach((d) => { d.open = mq.matches; });
+      set();
+      mq.addEventListener('change', set);
+      document.querySelectorAll('.coach-group > summary').forEach((s) => s.addEventListener('click', (e) => { if (mq.matches) e.preventDefault(); }));
+    })();
+  </script>
 </Base>
