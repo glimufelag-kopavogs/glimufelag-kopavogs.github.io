@@ -1,0 +1,64 @@
+---
+import Base from '../layouts/Base.astro';
+import Badge from '../components/Badge.astro';
+import prices from '../data/prices.json';
+const u = prices.ungmenni;
+const bn = prices.byrjendanamskeid;
+---
+<Base title="Verðskrá">
+  <section class="page-head">
+    <div class="container">
+      <h1>Verðskrá</h1>
+      <p>Skráning og greiðsla í Abler.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Fullorðnir</h2>
+      <div class="grid grid-3">
+        {prices.fullordnir.map((p) => (
+          <div class={`card ${p.til_stadfestingar ? 'card-review' : ''}`}>
+            <h3>{p.heiti} {p.til_stadfestingar && <Badge />}</h3>
+            <div class="price">{p.verd}</div>
+            <div class="unit">{p.eining}</div>
+            <p class="small">{p.lysing}<br /><span class="muted">{p.skilmalar}</span></p>
+            {p.til_stadfestingar && p.athugasemd && <span class="badge-note">{p.athugasemd}</span>}
+          </div>
+        ))}
+        <div class="card card-accent" id="byrjendanamskeid">
+          <h3>Byrjendanámskeið</h3>
+          <div class="price">{bn.verd}</div>
+          <div class="unit">4 vikur</div>
+          <p class="small">{bn.lysing}</p>
+          <a class="btn btn-accent" href="/hafa-samband#skraning">Skráðu þig</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container split">
+      <div>
+        <h2>Krakkar 3–17 ára</h2>
+        <p class="line">Verð á önn</p>
+        {u.til_stadfestingar && <p><Badge /> <span class="badge-note inline">{u.athugasemd}</span></p>}
+      </div>
+      <div class="card card-review">
+        <table class="table">
+          <tbody>
+            {u.hopar.map((h) => <tr><td>{h.hopur}</td><td class="num">{h.verd}</td></tr>)}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Afslættir</h2>
+      <p class="line">{prices.systkinaafslattur} systkinaafsláttur. Frístundastyrkir frá:</p>
+      <ul class="chips">{prices.fristundastyrkir.map((s) => <li>{s}</li>)}</ul>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,59 @@
+{
+  "fullordnir": [
+    {
+      "heiti": "Ótímabundin áskrift",
+      "verd": "14.990 kr.",
+      "eining": "á mánuði",
+      "lysing": "Allir tímar. Byrjendanámskeið innifalið.",
+      "skilmalar": "4 mánaða binding, 1 mánaðar uppsögn.",
+      "til_stadfestingar": false,
+      "athugasemd": ""
+    },
+    {
+      "heiti": "Stakur mánuður",
+      "verd": "19.990 / 19.900 kr.",
+      "eining": "einn mánuður",
+      "lysing": "Allir tímar í mánuð.",
+      "skilmalar": "Eftir byrjendanámskeið.",
+      "til_stadfestingar": true,
+      "athugasemd": "19.990 eða 19.900?"
+    }
+  ],
+  "byrjendanamskeid": {
+    "heiti": "Byrjendanámskeið í brasilísku jiu jitsu",
+    "verd": "23.990 kr.",
+    "lysing": "4 vikur, þri og fim kl. 19:30–20:30. Svo 2 fríar vikur í NoGi.",
+    "thjalfari": "Daði Steinn"
+  },
+  "ungmenni": {
+    "onn": "Vorönn 2026",
+    "til_stadfestingar": true,
+    "athugasemd": "Verð vorannar 2026.",
+    "hopar": [
+      {
+        "hopur": "3–5 ára",
+        "verd": "58.000 kr."
+      },
+      {
+        "hopur": "6–8 ára",
+        "verd": "67.000 kr."
+      },
+      {
+        "hopur": "9–13 ára",
+        "verd": "75.000 kr."
+      },
+      {
+        "hopur": "14–17 ára",
+        "verd": "75.000 kr."
+      }
+    ]
+  },
+  "fristundastyrkir": [
+    "Hafnarfjörður",
+    "Kópavogur",
+    "Garðabær",
+    "Mosfellsbær",
+    "Reykjavík"
+  ],
+  "systkinaafslattur": "10%"
+}

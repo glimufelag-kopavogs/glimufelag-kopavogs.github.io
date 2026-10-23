@@ -1,0 +1,49 @@
+---
+interface Hluti { fra: string; til?: string; heiti: string; vollur?: string | null }
+interface Session {
+  dagur: string; fra: string; til: string; timi: string;
+  tegund?: string; vollur?: string | null; til_stadfestingar?: boolean; athugasemd?: string;
+  hlutar?: Hluti[];
+}
+interface Props { sessions: Session[] }
+const { sessions } = Astro.props;
+const dagar = [
+  ['Mánudagur', 'Mán'], ['Þriðjudagur', 'Þri'], ['Miðvikudagur', 'Mið'], ['Fimmtudagur', 'Fim'],
+  ['Föstudagur', 'Fös'], ['Laugardagur', 'Lau'], ['Sunnudagur', 'Sun'],
+];
+const byDay = dagar.map(([full, short]) => ({
+  full, short,
+  items: sessions.filter((s) => s.dagur === full).sort((a, b) => a.fra.localeCompare(b.fra)),
+}));
+const typeClass = (t = '') => ({ 'Gi': 't-gi', 'NoGi': 't-nogi', 'Gi/NoGi': 't-mix' } as Record<string, string>)[t] ?? '';
+const typeLabel = (t = '') => t;
+---
+<div class="wk">
+  {byDay.map((d) => (
+    <section class="wk-day" aria-label={d.full}>
+      <h3 class="wk-head"><span class="wk-short">{d.short}</span><span class="wk-full">{d.full}</span></h3>
+      {d.items.length === 0 && <div class="wk-empty">–</div>}
+      {d.items.map((s) => (
+        <div class="wk-s">
+          <div class="wk-time">{s.fra}–{s.til}</div>
+          <div class="wk-name">{s.timi}</div>
+          <div class="wk-tags">
+            {s.tegund && <span class={`tg ${typeClass(s.tegund)}`}>{typeLabel(s.tegund)}</span>}
+            {s.vollur && !s.hlutar?.length && <span class="tg t-mat">{s.vollur}</span>}
+            {s.til_stadfestingar && <span class="badge" title={s.athugasemd}>Til staðfestingar</span>}
+          </div>
+          {s.hlutar?.length ? (
+            <ul class="wk-parts" aria-label="Skipting tímans">
+              {s.hlutar.map((h) => (
+                <li title={h.til ? `${h.fra}–${h.til}` : h.fra}>
+                  <span class="wk-pt">{h.fra}</span>
+                  <span class="wk-pd"><span class="wk-pn">{h.heiti}</span>{h.vollur && <><span class="wk-sep"> · </span><span class="wk-pv">{h.vollur}</span></>}</span>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
+      ))}
+    </section>
+  ))}
+</div>

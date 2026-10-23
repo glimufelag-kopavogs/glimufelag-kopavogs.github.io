@@ -1,0 +1,32 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+const posts = (await getCollection('frettir', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const fmt = (d: Date) => d.toLocaleDateString('is-IS', { day: 'numeric', month: 'short', timeZone: 'UTC' });
+const years = [...new Set(posts.map((p) => p.data.date.getUTCFullYear()))];
+---
+<Base title="Fréttir" description="Fréttir af starfi Glímufélags Kópavogs (GFK).">
+  <section class="page-head">
+    <div class="container">
+      <h1>Fréttir</h1>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      {years.map((y) => (
+        <>
+          <h2 class="year-head">{y}</h2>
+          <div class="news-list">
+            {posts.filter((p) => p.data.date.getUTCFullYear() === y).map((p) => (
+              <a class="news-item" href={`/frettir/${p.id}/`}>
+                <time datetime={p.data.date.toISOString().slice(0, 10)}>{fmt(p.data.date)}</time>
+                <h3>{p.data.title}</h3>
+              </a>
+            ))}
+          </div>
+        </>
+      ))}
+    </div>
+  </section>
+</Base>

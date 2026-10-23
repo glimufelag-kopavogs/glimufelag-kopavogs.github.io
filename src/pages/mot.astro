@@ -1,0 +1,67 @@
+---
+import Base from '../layouts/Base.astro';
+import site from '../data/site.json';
+import motData from '../data/mot.json';
+import Badge from '../components/Badge.astro';
+import { getCollection } from 'astro:content';
+const motRe = /mót|open|meistara|bjjmu|á leik|grappling|deild|grettis/i;
+const posts = (await getCollection('frettir', ({ data }) => !data.draft && motRe.test(data.title)))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+const fmt = (d: Date) => d.toLocaleDateString('is-IS', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+---
+<Base title="Mót" description="Mót og keppni hjá Glímufélagi Kópavogs (GFK).">
+  <section class="page-head">
+    <div class="container">
+      <h1>Mót</h1>
+      <p>GFK er aðildarfélag BJÍ.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Á döfinni</h2>
+      <p class="line">{motData.onn}</p>
+      <div class="event-list">
+        {motData.mot.map((m) => (
+          <div class="event">
+            <div class="when">{m.dags}</div>
+            <div>
+              <strong>{m.heiti}</strong> {m.til_stadfestingar && <Badge />}
+              {m.lysing && <span class="muted small"> · {m.lysing}</span>}
+              {m.til_stadfestingar && m.athugasemd && <span class="badge-note">{m.athugasemd}</span>}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container split">
+      <div>
+        <h2>Mótin okkar</h2>
+        <ul class="chips" style="margin-bottom:28px">
+          <li>BJJ mótaröð ungmenna</li><li>Hvítur á leik</li><li>Blár á leik</li><li>Blábeltingamót</li>
+        </ul>
+        <a class="btn btn-accent" href={site.skraning_motarod_ungmenna} rel="noopener">Skrá í BJJMU</a>
+        <p class="small" style="margin-top:14px"><a href={site.smoothcomp} rel="noopener">Úrslit á Smoothcomp ↗</a></p>
+      </div>
+      <div class="photo" aria-hidden="true">Mynd</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Úrslit og fréttir</h2>
+      <div class="news-list">
+        {posts.map((p) => (
+          <a class="news-item" href={`/frettir/${p.id}/`}>
+            <time datetime={p.data.date.toISOString().slice(0, 10)}>{fmt(p.data.date)}</time>
+            <h3>{p.data.title}</h3>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

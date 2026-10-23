@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+import WeekGrid from '../components/WeekGrid.astro';
+import schedule from '../data/schedule.json';
+---
+<Base title="Æfingatafla" description={`Æfingatafla GFK – ${schedule.onn}.`}>
+  <section class="page-head">
+    <div class="container">
+      <h1>Æfingatafla</h1>
+      <p>{schedule.onn} · {schedule.stadur}</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <h2>Fullorðnir</h2>
+      <WeekGrid sessions={schedule.fullordnir} />
+      <ul class="notes">{schedule.athugasemdir_fullordnir.map((a) => <li>{a}</li>)}</ul>
+    </div>
+  </section>
+  <section class="section section-alt">
+    <div class="container">
+      <h2>Krakkar 3–17 ára</h2>
+      <p class="line">{schedule.timabil_ungmenna}</p>
+      <WeekGrid sessions={schedule.ungmenni} />
+      <ul class="notes">{schedule.athugasemdir_ungmenni.map((a) => <li>{a}</li>)}</ul>
+    </div>
+  </section>
+</Base>

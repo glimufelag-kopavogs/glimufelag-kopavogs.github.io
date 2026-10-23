@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+const thjalfarar = [
+  { nafn: 'Daði Steinn Brynjarsson', hlutverk: 'Yfirþjálfari BJJ', lina: 'NoGi og byrjendanámskeið. Stofnaði BJJ-deildina á Smiðjuvegi 28.' },
+  { nafn: 'Pétur Óskarsson', hlutverk: 'Þjálfari', lina: 'Gi-tímar fullorðinna.' },
+  { nafn: 'Eiður Sigurðsson', hlutverk: 'Yfirþjálfari ungmennastarfs', lina: 'BJJ fyrir 3–17 ára.' },
+];
+---
+<Base title="Þjálfarar" description="Þjálfarar Glímufélags Kópavogs (GFK).">
+  <section class="page-head">
+    <div class="container">
+      <h1>Þjálfarar</h1>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container grid grid-3">
+      {thjalfarar.map((t) => (
+        <article class="card coach">
+          <h2 class="coach-name">{t.nafn}</h2>
+          <div class="coach-role">{t.hlutverk}</div>
+          <p class="muted small" style="margin:0">{t.lina}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+</Base>

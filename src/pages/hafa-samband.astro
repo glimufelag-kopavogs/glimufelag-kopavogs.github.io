@@ -1,0 +1,48 @@
+---
+import Base from '../layouts/Base.astro';
+import schedule from '../data/schedule.json';
+import site from '../data/site.json';
+---
+<Base title="Hafa samband og skráning" description="Skráning og samskiptaupplýsingar Glímufélags Kópavogs (GFK).">
+  <section class="page-head">
+    <div class="container">
+      <h1>Skráðu þig</h1>
+      <p>Öll skráning fer fram í Abler.</p>
+    </div>
+  </section>
+
+  <section class="section" id="skraning">
+    <div class="container grid grid-2">
+      <div class="card card-accent">
+        <h3>Fullorðnir og byrjendur</h3>
+        <p class="muted small">Áskriftir og byrjendanámskeið</p>
+        <a class="btn btn-accent" href={site.skraning_almenn} rel="noopener">Skrá í Abler</a>
+      </div>
+      <div class="card card-accent">
+        <h3>Krakkar – {schedule.onn}</h3>
+        <ul class="clean">
+          {schedule.ungmennahopar.map((h) => (
+            <li class="reg-row"><span>{h.hopur}</span><a href={h.skraning} rel="noopener">Skrá →</a></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container split">
+      <div>
+        <h2>Hafðu samband</h2>
+        <ul class="clean contact">
+          <li>{site.heimilisfang}</li>
+          <li><a href={`tel:+354${site.simi}`}>{site.simi}</a></li>
+          <li><a href={`mailto:${site.netfang}`}>{site.netfang}</a></li>
+          <li><a href={`mailto:${site.netfang_gfk}`}>{site.netfang_gfk}</a></li>
+          <li><span class="muted">Stjórn:</span> <a href={`mailto:${site.netfang_stjorn}`}>{site.netfang_stjorn}</a></li>
+          <li><span class="muted">Mót:</span> <a href={`mailto:${site.netfang_motstjori}`}>{site.netfang_motstjori}</a></li>
+        </ul>
+      </div>
+      <div class="photo" aria-hidden="true">Kort</div>
+    </div>
+  </section>
+</Base>

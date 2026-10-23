@@ -1,0 +1,63 @@
+---
+import '../styles/global.css';
+import site from '../data/site.json';
+interface Props { title: string; description?: string }
+const { title, description = 'Glímufélag Kópavogs (GFK) – brasilískt jiu jitsu fyrir fullorðna og ungmenni 3–17 ára í Kópavogi.' } = Astro.props;
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const nav = [
+  { href: '/', label: 'Forsíða' },
+  { href: '/aefingatafla', label: 'Æfingatafla' },
+  { href: '/verdskra', label: 'Verðskrá' },
+  { href: '/ungmennastarf', label: 'Ungmennastarf' },
+  { href: '/thjalfarar', label: 'Þjálfarar' },
+  { href: '/frettir', label: 'Fréttir' },
+  { href: '/mot', label: 'Mót' },
+  { href: '/hafa-samband', label: 'Hafa samband' },
+];
+const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
+const fullTitle = title === 'Forsíða' ? `${site.nafn} (${site.stytting})` : `${title} | ${site.nafn} (${site.stytting})`;
+---
+<!doctype html>
+<html lang="is">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#0e1013" />
+    <title>{fullTitle}</title>
+  </head>
+  <body>
+    <div class="draft-banner">Drög · <span class="badge">Til staðfestingar</span> = á eftir að staðfesta</div>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="logo-link" href="/">
+          <img src="/gfk-logo-white.svg" alt="Glímufélag Kópavogs (GFK)" width="150" height="46" />
+          <span class="sr-only">– forsíða</span>
+        </a>
+        <details class="nav-toggle">
+          <summary aria-label="Valmynd"><span></span><span></span><span></span></summary>
+          <nav class="nav-mobile" aria-label="Aðalvalmynd (farsími)">
+            {nav.map((n) => <a href={n.href} class={isActive(n.href) ? 'active' : ''}>{n.label}</a>)}
+            <a class="btn btn-accent" href="/hafa-samband#skraning">Skráðu þig</a>
+          </nav>
+        </details>
+        <nav class="nav-desktop" aria-label="Aðalvalmynd">
+          {nav.slice(1).map((n) => <a href={n.href} class={isActive(n.href) ? 'active' : ''}>{n.label}</a>)}
+          <a class="btn btn-accent btn-sm" href="/hafa-samband#skraning">Skráðu þig</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-row">
+        <a class="logo-link" href="/"><img src="/gfk-logo-white.svg" alt="Glímufélag Kópavogs (GFK)" width="143" height="44" /></a>
+        <p class="muted small">{site.heimilisfang} · <a href={`tel:+354${site.simi}`}>{site.simi}</a> · <a href={`mailto:${site.netfang}`}>{site.netfang}</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

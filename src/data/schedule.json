@@ -1,0 +1,396 @@
+{
+  "onn": "Haustönn 2026",
+  "timabil_ungmenna": "24. ágúst – 12. desember",
+  "stadur": "Smiðjuvegi 28, 200 Kópavogi",
+  "fullordnir": [
+    {
+      "dagur": "Mánudagur",
+      "fra": "12:00",
+      "til": "13:00",
+      "timi": "Hádegistími",
+      "tegund": "NoGi",
+      "vollur": "Stóri völlur",
+      "til_stadfestingar": false,
+      "athugasemd": ""
+    },
+    {
+      "dagur": "Mánudagur",
+      "fra": "18:00",
+      "til": "19:30",
+      "timi": "BJJ",
+      "tegund": "Gi",
+      "vollur": "Stóri völlur",
+      "til_stadfestingar": false,
+      "athugasemd": ""
+    },
+    {
+      "dagur": "Þriðjudagur",
+      "fra": "12:00",
+      "til": "13:00",
+      "timi": "Open mat",
+      "tegund": "Gi",
+      "vollur": "Stóri völlur",
+      "til_stadfestingar": false,
+      "athugasemd": ""
+    },
+    {
+      "dagur": "Þriðjudagur",
+      "fra": "18:00",
+      "til": "19:30",
+      "timi": "BJJ",
+      "tegund": "NoGi",
+      "vollur": "Stóri völlur",
+      "til_stadfestingar": false,
+      "athugasemd": ""
+    },
+    {
+      "dagur": "Þriðjudagur",
+      "fra": "19:30",
+      "til": "20:30",
+      "timi": "Byrjendur",
+      "tegund": "NoGi",
+      "vollur": "Stóri völlur",
+      "til_stadfestingar": false,
+      "athugasemd": ""
+    },
+    {
+      "dagur": "Miðvikudagur",
+      "fra": "12:00",
+      "til": "13:00",
+      "timi": "Hádegistími",
+      "tegund": "NoGi",
+      "vollur": "Stóri völlur",
+      "til_stadfestingar": false,
+      "athugasemd": ""
+    },
+    {
+      "dagur": "Miðvikudagur",
+      "fra": "18:00",
+      "til": "19:30",
+      "timi": "BJJ",
+      "tegund": "Gi",
+      "vollur": "Stóri völlur",
+      "til_stadfestingar": false,
+      "athugasemd": ""
+    },
+    {
+      "dagur": "Fimmtudagur",
+      "fra": "12:00",
+      "til": "13:00",
+      "timi": "Open mat",
+      "tegund": "NoGi",
+      "vollur": "Stóri völlur",
+      "til_stadfestingar": false,
+      "athugasemd": ""
+    },
+    {
+      "dagur": "Fimmtudagur",
+      "fra": "18:00",
+      "til": "19:30",
+      "timi": "BJJ",
+      "tegund": "NoGi",
+      "vollur": "Stóri völlur",
+      "til_stadfestingar": false,
+      "athugasemd": ""
+    },
+    {
+      "dagur": "Fimmtudagur",
+      "fra": "19:30",
+      "til": "20:30",
+      "timi": "Byrjendur",
+      "tegund": "NoGi",
+      "vollur": "Stóri völlur",
+      "til_stadfestingar": false,
+      "athugasemd": ""
+    },
+    {
+      "dagur": "Föstudagur",
+      "fra": "18:00",
+      "til": "19:30",
+      "timi": "BJJ",
+      "tegund": "NoGi",
+      "vollur": "Stóri völlur",
+      "til_stadfestingar": false,
+      "athugasemd": ""
+    },
+    {
+      "dagur": "Laugardagur",
+      "fra": "12:00",
+      "til": "13:00",
+      "timi": "Open mat",
+      "tegund": "NoGi",
+      "vollur": "Stóri völlur",
+      "til_stadfestingar": false,
+      "athugasemd": ""
+    },
+    {
+      "dagur": "Sunnudagur",
+      "fra": "10:00",
+      "til": "11:00",
+      "timi": "Gelluglíma",
+      "tegund": "",
+      "vollur": "Stóri völlur",
+      "til_stadfestingar": false,
+      "athugasemd": ""
+    }
+  ],
+  "ungmenni": [
+    {
+      "dagur": "Mánudagur",
+      "fra": "16:30",
+      "til": "19:00",
+      "timi": "9–13 / 14–17",
+      "tegund": "Gi/NoGi",
+      "vollur": "Stóri völlur",
+      "til_stadfestingar": false,
+      "athugasemd": "",
+      "hlutar": [
+        {
+          "fra": "16:30",
+          "til": "18:00",
+          "heiti": "Glíma",
+          "vollur": "Stóri völlur"
+        },
+        {
+          "fra": "18:00",
+          "til": "18:30",
+          "heiti": "Lyftingar",
+          "vollur": "Lyftingasalur"
+        },
+        {
+          "fra": "18:30",
+          "til": "19:00",
+          "heiti": "Teygjur",
+          "vollur": "Litli völlur"
+        }
+      ]
+    },
+    {
+      "dagur": "Þriðjudagur",
+      "fra": "16:15",
+      "til": "17:00",
+      "timi": "3–5 ára",
+      "tegund": "Gi",
+      "vollur": "Stóri völlur",
+      "til_stadfestingar": false,
+      "athugasemd": ""
+    },
+    {
+      "dagur": "Þriðjudagur",
+      "fra": "16:30",
+      "til": "18:00",
+      "timi": "6–8 ára",
+      "tegund": "Gi",
+      "vollur": "Stóri völlur",
+      "til_stadfestingar": false,
+      "athugasemd": "",
+      "hlutar": [
+        {
+          "fra": "16:30",
+          "til": "17:00",
+          "heiti": "Styrkur",
+          "vollur": "Litli völlur"
+        },
+        {
+          "fra": "17:00",
+          "til": "18:00",
+          "heiti": "Glíma",
+          "vollur": "Stóri völlur"
+        }
+      ]
+    },
+    {
+      "dagur": "Þriðjudagur",
+      "fra": "18:00",
+      "til": "19:00",
+      "timi": "Afrekshópur",
+      "tegund": "Gi",
+      "vollur": "Litli völlur",
+      "til_stadfestingar": false,
+      "athugasemd": ""
+    },
+    {
+      "dagur": "Miðvikudagur",
+      "fra": "16:30",
+      "til": "19:00",
+      "timi": "9–13 / 14–17",
+      "tegund": "Gi/NoGi",
+      "vollur": "Stóri völlur",
+      "til_stadfestingar": false,
+      "athugasemd": "",
+      "hlutar": [
+        {
+          "fra": "16:30",
+          "til": "18:00",
+          "heiti": "Glíma",
+          "vollur": "Stóri völlur"
+        },
+        {
+          "fra": "18:00",
+          "til": "18:30",
+          "heiti": "Lyftingar",
+          "vollur": "Lyftingasalur"
+        },
+        {
+          "fra": "18:30",
+          "til": "19:00",
+          "heiti": "Teygjur",
+          "vollur": "Litli völlur"
+        }
+      ]
+    },
+    {
+      "dagur": "Fimmtudagur",
+      "fra": "16:15",
+      "til": "17:00",
+      "timi": "3–5 ára",
+      "tegund": "Gi",
+      "vollur": "Stóri völlur",
+      "til_stadfestingar": false,
+      "athugasemd": ""
+    },
+    {
+      "dagur": "Fimmtudagur",
+      "fra": "16:30",
+      "til": "18:00",
+      "timi": "6–8 ára",
+      "tegund": "Gi",
+      "vollur": "Stóri völlur",
+      "til_stadfestingar": false,
+      "athugasemd": "",
+      "hlutar": [
+        {
+          "fra": "16:30",
+          "til": "17:00",
+          "heiti": "Styrkur",
+          "vollur": "Litli völlur"
+        },
+        {
+          "fra": "17:00",
+          "til": "18:00",
+          "heiti": "Glíma",
+          "vollur": "Stóri völlur"
+        }
+      ]
+    },
+    {
+      "dagur": "Fimmtudagur",
+      "fra": "18:00",
+      "til": "19:00",
+      "timi": "Afrekshópur",
+      "tegund": "NoGi",
+      "vollur": "Litli völlur",
+      "til_stadfestingar": false,
+      "athugasemd": ""
+    },
+    {
+      "dagur": "Föstudagur",
+      "fra": "16:30",
+      "til": "19:00",
+      "timi": "9–13 / 14–17",
+      "tegund": "Gi/NoGi",
+      "vollur": "Stóri völlur",
+      "til_stadfestingar": false,
+      "athugasemd": "",
+      "hlutar": [
+        {
+          "fra": "16:30",
+          "til": "18:00",
+          "heiti": "Glíma",
+          "vollur": "Stóri völlur"
+        },
+        {
+          "fra": "18:00",
+          "til": "18:30",
+          "heiti": "Lyftingar",
+          "vollur": "Lyftingasalur"
+        },
+        {
+          "fra": "18:30",
+          "til": "19:00",
+          "heiti": "Teygjur",
+          "vollur": "Litli völlur"
+        }
+      ]
+    },
+    {
+      "dagur": "Laugardagur",
+      "fra": "11:00",
+      "til": "12:00",
+      "timi": "3–5 / 6–8",
+      "tegund": "NoGi",
+      "vollur": "Stóri völlur",
+      "til_stadfestingar": false,
+      "athugasemd": ""
+    },
+    {
+      "dagur": "Laugardagur",
+      "fra": "13:00",
+      "til": "14:00",
+      "timi": "9–13 / 14–17",
+      "tegund": "Gi/NoGi",
+      "vollur": "Stóri völlur",
+      "til_stadfestingar": false,
+      "athugasemd": ""
+    }
+  ],
+  "ungmennahopar": [
+    {
+      "hopur": "3–5 ára",
+      "faedingarar": "2021–2023",
+      "lysing": "Áhersla á leik og gleði, stuðlar að aukinni hreyfigetu og færni. Grunnhreyfingar og tækni í jiu jitsu kynntar.",
+      "aefingar": [
+        "Þri og fim 16:15–17:00 (Gi)",
+        "Lau 11:00–12:00 (NoGi)"
+      ],
+      "skraning": "https://www.abler.io/shop/hfk/bjj?program=Q2x1YlNlcnZpY2U6NjI2MTk="
+    },
+    {
+      "hopur": "6–8 ára",
+      "faedingarar": "2018–2020",
+      "lysing": "Áhersla á leik og gleði, stuðlar að aukinni hreyfigetu og færni. Grunnhreyfingar og tækni í jiu jitsu kynntar.",
+      "aefingar": [
+        "Þri og fim 16:30–18:00 (Gi)",
+        "Lau 11:00–12:00 (NoGi)"
+      ],
+      "skraning": "https://www.abler.io/shop/hfk/bjj?program=Q2x1YlNlcnZpY2U6NjI2MTY="
+    },
+    {
+      "hopur": "9–13 ára",
+      "faedingarar": "2013–2017",
+      "lysing": "Lögð er áhersla á aukinn styrk, tæknilega færni og leikfræði í jiu jitsu.",
+      "aefingar": [
+        "Mán, mið, fös 16:30–19:00",
+        "Lau 13:00–14:00"
+      ],
+      "skraning": "https://www.abler.io/shop/hfk/bjj?program=Q2x1YlNlcnZpY2U6NjI2MTM="
+    },
+    {
+      "hopur": "14–17 ára",
+      "faedingarar": "2009–2012",
+      "lysing": "Lögð er áhersla á aukinn styrk, tæknilega færni og leikfræði í jiu jitsu.",
+      "aefingar": [
+        "Mán, mið, fös 16:30–19:00",
+        "Lau 13:00–14:00"
+      ],
+      "skraning": "https://www.abler.io/shop/hfk/bjj?program=Q2x1YlNlcnZpY2U6NjI2MTE="
+    }
+  ],
+  "heimild_fullordnir": "Tímar: vbc.is /training-schedule (26.9.2026). Völlur: Abler-yfirlit í GFK_Ungmenni_Stundatafla_Vor2027_itarlegt.html (26.9.2026): Stóra glímusvæðið frátekið fyrir BJJ fullorðna mán–fim 12–13, mán–fös 18–19:30, byrjendur þri/fim 19:30–20:30, lau 12–13; Gellu glíma sun 10–11 á Stóra. Enginn tími fös 12:00 (Eiður staðfesti 27.9.2026).",
+  "heimild_ungmenni": "GFK_Haustonn_2026_Dagatal.html (uppfært 27.8.2026): allar æfingar á Stóra glímusvæði nema Afrekshópur á Litla. Staðfest af Abler-yfirliti (vika 28.9–4.10).",
+  "athugasemdir_ungmenni": [
+    "Afrekshópur: eftir boði þjálfara.",
+    "Gi/NoGi: breytilegt eftir tímabilum, sjá Abler.",
+    "Abler gildir ef æfing fellur niður."
+  ],
+  "afrekshopur": {
+    "heiti": "Afrekshópur",
+    "lysing": "Eftir boði þjálfara eða ósk foreldra/barns. Kemur til viðbótar við æfingar aldurshópsins.",
+    "aefingar": [
+      "Þri 18:00–19:00 (Gi)",
+      "Fim 18:00–19:00 (NoGi)"
+    ],
+    "vollur": "Litli völlur"
+  },
+  "athugasemdir_fullordnir": []
+}

@@ -1,0 +1,54 @@
+---
+import Base from '../layouts/Base.astro';
+import Badge from '../components/Badge.astro';
+import schedule from '../data/schedule.json';
+import prices from '../data/prices.json';
+const u = prices.ungmenni;
+const verdFyrir = (hopur: string) => u.hopar.find((h) => h.hopur === hopur)?.verd;
+---
+<Base title="Ungmennastarf" description="Brasilískt jiu jitsu fyrir 3–17 ára hjá GFK.">
+  <section class="page-head">
+    <div class="container">
+      <h1>Krakkar og unglingar</h1>
+      <p>3–17 ára · {schedule.onn}: {schedule.timabil_ungmenna} · Yfirþjálfari: Eiður Sigurðsson</p>
+    </div>
+  </section>
+
+  <div class="container"><div class="photo photo-wide" aria-hidden="true">Mynd</div></div>
+
+  <section class="section" id="hopar">
+    <div class="container">
+      <h2>Veldu hóp</h2>
+      <p class="line">Verð á önn {u.til_stadfestingar && <Badge />} {u.til_stadfestingar && <span class="badge-note inline">{u.athugasemd}</span>}</p>
+      <div class="grid grid-4">
+        {schedule.ungmennahopar.map((h) => (
+          <article class="card group">
+            <h3>{h.hopur}</h3>
+            <div class="muted small">f. {h.faedingarar}</div>
+            <ul class="clean small">{h.aefingar.map((a) => <li>{a}</li>)}</ul>
+            <div class="price-sm">{verdFyrir(h.hopur)}</div>
+            <a class="btn btn-accent" href={h.skraning} rel="noopener">Skrá</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="afrekshopur">
+    <div class="container split">
+      <div>
+        <h2>Afrekshópur</h2>
+        <p class="line">Eftir boði þjálfara, ofan á venjulegar æfingar.</p>
+      </div>
+      <ul class="clean">{schedule.afrekshopur.aefingar.map((a) => <li>{a}</li>)}</ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Afslættir</h2>
+      <p class="line">{prices.systkinaafslattur} systkinaafsláttur og frístundastyrkir.</p>
+      <a class="btn btn-ghost" href="/verdskra">Verðskrá</a>
+    </div>
+  </section>
+</Base>

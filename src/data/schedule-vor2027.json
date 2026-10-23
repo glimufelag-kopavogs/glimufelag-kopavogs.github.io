@@ -1,0 +1,304 @@
+{
+  "onn": "Vorönn 2027",
+  "stada": "TILLAGA – drög, ekki samþykkt og ekki komin í Abler. Ekki birt á vefnum.",
+  "heimild": "GFK_Ungmenni_Stundatafla_Vor2027_TILLAGA.html (26.9.2026, kl. 21:22) frá Eiði Sigurðssyni; ítarleg útgáfa með valkostum A1/A2/B1/B2 í GFK_Ungmenni_Stundatafla_Vor2027_itarlegt.html",
+  "hopar_breytingar": [
+    {
+      "hopur": "3–5 ára",
+      "i_dag": "2×45 mín + lau 60 (með 6–8)",
+      "nytt": "3×45 mín glíma"
+    },
+    {
+      "hopur": "6–8 ára",
+      "i_dag": "2×90 mín + lau 60 (með 3–5)",
+      "nytt": "3×60 mín glíma + 2×30 mín styrkur"
+    },
+    {
+      "hopur": "9–11 ára (nýr hópur, úr 9–13)",
+      "i_dag": "3×90 + lau 60",
+      "nytt": "4×60 mín glíma + 3×30 styrkur + 3×30 teygjur"
+    },
+    {
+      "hopur": "12–17 ára (nýr hópur, úr 9–13 og 14–17)",
+      "i_dag": "3×90 + lau 60",
+      "nytt": "4×90 mín glíma + 3×30 styrkur + 3×30 teygjur"
+    },
+    {
+      "hopur": "Afrekshópur",
+      "i_dag": "2×60 + lyftingar 1. og 3. lau",
+      "nytt": "2×60 (óbreytt); laugardagslyftingar detta út"
+    }
+  ],
+  "timar": [
+    {
+      "dagur": "Mánudagur",
+      "fra": "16:15",
+      "til": "17:15",
+      "timi": "9–11 ára",
+      "tegund": "Glíma",
+      "vollur": "Stóri völlur"
+    },
+    {
+      "dagur": "Mánudagur",
+      "fra": "17:15",
+      "til": "17:45",
+      "timi": "9–11 ára",
+      "tegund": "Teygjur",
+      "vollur": "Stóri völlur"
+    },
+    {
+      "dagur": "Mánudagur",
+      "fra": "17:45",
+      "til": "18:15",
+      "timi": "9–11 ára",
+      "tegund": "Styrkur",
+      "vollur": "Lyftingasalur"
+    },
+    {
+      "dagur": "Mánudagur",
+      "fra": "17:15",
+      "til": "18:45",
+      "timi": "12–17 ára",
+      "tegund": "Glíma",
+      "vollur": "Litli völlur"
+    },
+    {
+      "dagur": "Mánudagur",
+      "fra": "18:45",
+      "til": "19:15",
+      "timi": "12–17 ára",
+      "tegund": "Styrkur",
+      "vollur": "Lyftingasalur"
+    },
+    {
+      "dagur": "Mánudagur",
+      "fra": "19:15",
+      "til": "19:45",
+      "timi": "12–17 ára",
+      "tegund": "Teygjur",
+      "vollur": "Litli völlur"
+    },
+    {
+      "dagur": "Miðvikudagur",
+      "fra": "16:15",
+      "til": "17:15",
+      "timi": "9–11 ára",
+      "tegund": "Glíma",
+      "vollur": "Stóri völlur"
+    },
+    {
+      "dagur": "Miðvikudagur",
+      "fra": "17:15",
+      "til": "17:45",
+      "timi": "9–11 ára",
+      "tegund": "Teygjur",
+      "vollur": "Stóri völlur"
+    },
+    {
+      "dagur": "Miðvikudagur",
+      "fra": "17:45",
+      "til": "18:15",
+      "timi": "9–11 ára",
+      "tegund": "Styrkur",
+      "vollur": "Lyftingasalur"
+    },
+    {
+      "dagur": "Miðvikudagur",
+      "fra": "17:15",
+      "til": "18:45",
+      "timi": "12–17 ára",
+      "tegund": "Glíma",
+      "vollur": "Litli völlur"
+    },
+    {
+      "dagur": "Miðvikudagur",
+      "fra": "18:45",
+      "til": "19:15",
+      "timi": "12–17 ára",
+      "tegund": "Styrkur",
+      "vollur": "Lyftingasalur"
+    },
+    {
+      "dagur": "Miðvikudagur",
+      "fra": "19:15",
+      "til": "19:45",
+      "timi": "12–17 ára",
+      "tegund": "Teygjur",
+      "vollur": "Litli völlur"
+    },
+    {
+      "dagur": "Föstudagur",
+      "fra": "16:15",
+      "til": "17:15",
+      "timi": "9–11 ára",
+      "tegund": "Glíma",
+      "vollur": "Stóri völlur"
+    },
+    {
+      "dagur": "Föstudagur",
+      "fra": "17:15",
+      "til": "17:45",
+      "timi": "9–11 ára",
+      "tegund": "Teygjur",
+      "vollur": "Stóri völlur"
+    },
+    {
+      "dagur": "Föstudagur",
+      "fra": "17:45",
+      "til": "18:15",
+      "timi": "9–11 ára",
+      "tegund": "Styrkur",
+      "vollur": "Lyftingasalur"
+    },
+    {
+      "dagur": "Föstudagur",
+      "fra": "17:15",
+      "til": "18:45",
+      "timi": "12–17 ára",
+      "tegund": "Glíma",
+      "vollur": "Litli völlur"
+    },
+    {
+      "dagur": "Föstudagur",
+      "fra": "18:45",
+      "til": "19:15",
+      "timi": "12–17 ára",
+      "tegund": "Styrkur",
+      "vollur": "Lyftingasalur"
+    },
+    {
+      "dagur": "Föstudagur",
+      "fra": "19:15",
+      "til": "19:45",
+      "timi": "12–17 ára",
+      "tegund": "Teygjur",
+      "vollur": "Litli völlur"
+    },
+    {
+      "dagur": "Þriðjudagur",
+      "fra": "16:15",
+      "til": "17:15",
+      "timi": "6–8 ára",
+      "tegund": "Glíma",
+      "vollur": "Stóri völlur"
+    },
+    {
+      "dagur": "Þriðjudagur",
+      "fra": "17:15",
+      "til": "17:45",
+      "timi": "6–8 ára",
+      "tegund": "Styrkur",
+      "vollur": "Lyftingasalur"
+    },
+    {
+      "dagur": "Þriðjudagur",
+      "fra": "17:15",
+      "til": "18:00",
+      "timi": "3–5 ára",
+      "tegund": "Glíma",
+      "vollur": "Stóri völlur"
+    },
+    {
+      "dagur": "Þriðjudagur",
+      "fra": "18:00",
+      "til": "19:00",
+      "timi": "Afrekshópur",
+      "tegund": "Glíma",
+      "vollur": "Litli völlur"
+    },
+    {
+      "dagur": "Fimmtudagur",
+      "fra": "16:15",
+      "til": "17:15",
+      "timi": "6–8 ára",
+      "tegund": "Glíma",
+      "vollur": "Stóri völlur"
+    },
+    {
+      "dagur": "Fimmtudagur",
+      "fra": "17:15",
+      "til": "17:45",
+      "timi": "6–8 ára",
+      "tegund": "Styrkur",
+      "vollur": "Lyftingasalur"
+    },
+    {
+      "dagur": "Fimmtudagur",
+      "fra": "17:15",
+      "til": "18:00",
+      "timi": "3–5 ára",
+      "tegund": "Glíma",
+      "vollur": "Stóri völlur"
+    },
+    {
+      "dagur": "Fimmtudagur",
+      "fra": "18:00",
+      "til": "19:00",
+      "timi": "Afrekshópur",
+      "tegund": "Glíma",
+      "vollur": "Litli völlur"
+    },
+    {
+      "dagur": "Laugardagur",
+      "fra": "10:00",
+      "til": "10:50",
+      "timi": "Afreksfundur / þjálfarafundur",
+      "tegund": "Fundur",
+      "vollur": "Fundarherbergi"
+    },
+    {
+      "dagur": "Laugardagur",
+      "fra": "11:00",
+      "til": "11:45",
+      "timi": "3–5 ára",
+      "tegund": "Glíma",
+      "vollur": "Stóri völlur (½)"
+    },
+    {
+      "dagur": "Laugardagur",
+      "fra": "11:00",
+      "til": "12:00",
+      "timi": "6–8 ára",
+      "tegund": "Glíma",
+      "vollur": "Stóri völlur (½)"
+    },
+    {
+      "dagur": "Laugardagur",
+      "fra": "12:10",
+      "til": "12:55",
+      "timi": "Pyramid 9–11",
+      "tegund": "Fundur",
+      "vollur": "Fundarherbergi"
+    },
+    {
+      "dagur": "Laugardagur",
+      "fra": "13:00",
+      "til": "14:00",
+      "timi": "9–11 ára",
+      "tegund": "Glíma",
+      "vollur": "Stóri völlur"
+    },
+    {
+      "dagur": "Laugardagur",
+      "fra": "14:00",
+      "til": "15:30",
+      "timi": "12–17 ára",
+      "tegund": "Glíma",
+      "vollur": "Stóri völlur"
+    },
+    {
+      "dagur": "Sunnudagur",
+      "fra": "10:00",
+      "til": "11:00",
+      "timi": "Gellu glíma",
+      "tegund": "Glíma",
+      "vollur": "Stóri völlur"
+    }
+  ],
+  "opnar_spurningar": [
+    "Teygjur 9–11 (mán/mið/fös 17:15) skarast við upphaf 12–17 – hver stýrir þeim?",
+    "Styrkur gerir ráð fyrir að lyftingasalur sé laus mán/mið/fös 17:45–19:15 og þri/fim 17:15–17:45.",
+    "12–17 ára eru búin 19:45 þrjá virka daga, sem er seint fyrir 12 ára börn.",
+    "Í ítarlegu útgáfunni: er 9–13/14–17 í raun 16:30–18:00 (Abler segir 19:00)?"
+  ]
+}

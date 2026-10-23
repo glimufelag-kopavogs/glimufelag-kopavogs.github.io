@@ -1,0 +1,54 @@
+{
+  "onn": "Haustönn 2026",
+  "heimild": "GFK_Haustonn_2026_Dagatal.html (uppfært 27. ágúst 2026)",
+  "mot": [
+    {
+      "dags": "27. september 2026",
+      "heiti": "BJJMU 24 (Gi)",
+      "lysing": "Smiðjuvegi 28. Vigtun kl. 09:00.",
+      "tegund": "Mót",
+      "til_stadfestingar": false,
+      "athugasemd": ""
+    },
+    {
+      "dags": "8.–12. október 2026",
+      "heiti": "IBJJF Nogi Kids Europeans",
+      "lysing": "Keppnisferð.",
+      "tegund": "Keppnisferð",
+      "til_stadfestingar": false,
+      "athugasemd": ""
+    },
+    {
+      "dags": "29. október – 2. nóvember 2026",
+      "heiti": "IBJJF Nogi Europeans",
+      "lysing": "Keppnisferð.",
+      "tegund": "Keppnisferð",
+      "til_stadfestingar": false,
+      "athugasemd": ""
+    },
+    {
+      "dags": "14.–15. eða 21.–22. nóvember 2026",
+      "heiti": "BJÍ Íslandsmeistaramót í Gi",
+      "lysing": "",
+      "tegund": "Mót",
+      "til_stadfestingar": true,
+      "athugasemd": "Dagsetning óljós."
+    },
+    {
+      "dags": "6. desember 2026",
+      "heiti": "BJJMU 25 (Nogi)",
+      "lysing": "",
+      "tegund": "Mót",
+      "til_stadfestingar": false,
+      "athugasemd": ""
+    },
+    {
+      "dags": "Október/nóvember",
+      "heiti": "Grettismótið",
+      "lysing": "Ekki á hendi GFK.",
+      "tegund": "Mót",
+      "til_stadfestingar": true,
+      "athugasemd": "Dagsetning óljós."
+    }
+  ]
+}

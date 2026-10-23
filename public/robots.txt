@@ -1,0 +1,3 @@
+# Drög – ekki leyfa skráningu leitarvéla fyrr en vefurinn er birtur formlega
+User-agent: *
+Disallow: /

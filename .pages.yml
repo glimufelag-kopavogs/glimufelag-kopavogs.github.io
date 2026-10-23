@@ -1,0 +1,192 @@
+# Pages CMS (https://pagescms.org) – ritstjórnarviðmót fyrir vef GFK
+media:
+  input: public/media
+  output: /media
+
+content:
+  - name: frettir
+    label: Fréttir
+    type: collection
+    path: src/content/frettir
+    filename: "{year}-{month}-{day}-{primary}.md"
+    view:
+      fields: [title, date]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - { name: title, label: Titill, type: string, required: true }
+      - { name: date, label: Dagsetning, type: date, required: true }
+      - { name: hofundur, label: Höfundur, type: string }
+      - { name: flokkur, label: Flokkur, type: string }
+      - { name: upprunaleg_slod, label: Upprunaleg slóð (vbc.is), type: string }
+      - { name: yfirfara_personuvernd, label: Þarf yfirferð vegna persónuverndar, type: boolean, default: false }
+      - { name: draft, label: Drög (ekki birt), type: boolean, default: false }
+      - { name: body, label: Texti, type: rich-text }
+
+  - name: aefingatafla
+    label: Æfingatafla
+    type: file
+    path: src/data/schedule.json
+    format: json
+    fields:
+      - { name: onn, label: Önn, type: string, required: true }
+      - { name: timabil_ungmenna, label: Tímabil ungmennaannar, type: string }
+      - { name: stadur, label: Staður, type: string }
+      - { name: heimild_fullordnir, label: Heimild (fullorðnir), type: string }
+      - { name: heimild_ungmenni, label: Heimild (ungmenni), type: string }
+      - name: fullordnir
+        label: Tímar fullorðinna
+        type: object
+        list: true
+        fields: &timi
+          - name: dagur
+            label: Dagur
+            type: select
+            options:
+              values: [Mánudagur, Þriðjudagur, Miðvikudagur, Fimmtudagur, Föstudagur, Laugardagur, Sunnudagur]
+          - { name: fra, label: Frá (kk:mm), type: string }
+          - { name: til, label: Til (kk:mm), type: string }
+          - { name: timi, label: Heiti / hópur (stutt), type: string }
+          - name: tegund
+            label: Tegund
+            type: select
+            options:
+              values: ["", Gi, NoGi, Gi/NoGi]
+          - name: vollur
+            label: Völlur
+            type: select
+            options:
+              values: ["", Stóri völlur, Litli völlur]
+          - { name: til_stadfestingar, label: Til staðfestingar (gult merki), type: boolean }
+          - { name: athugasemd, label: Athugasemd, type: string }
+          - name: hlutar
+            label: Skipting tímans (valfrjálst)
+            description: Aðeins ef tímanum er skipt í hluta, t.d. styrkur og glíma. Völlur hvers hluta birtist þá í stað vallar tímans.
+            type: object
+            list: true
+            required: false
+            fields:
+              - { name: fra, label: Frá (kk:mm), type: string }
+              - { name: til, label: Til (kk:mm), type: string }
+              - { name: heiti, label: Heiti hluta, type: string }
+              - name: vollur
+                label: Völlur
+                type: select
+                options:
+                  values: ["", Stóri völlur, Litli völlur, Lyftingasalur]
+      - name: ungmenni
+        label: Tímar ungmenna
+        type: object
+        list: true
+        fields: *timi
+      - { name: athugasemdir_fullordnir, label: Athugasemdir við töflu fullorðinna, type: string, list: true }
+      - { name: athugasemdir_ungmenni, label: Athugasemdir við ungmennatöflu, type: string, list: true }
+      - name: afrekshopur
+        label: Afrekshópur
+        type: object
+        fields:
+          - { name: heiti, label: Heiti, type: string }
+          - { name: lysing, label: Lýsing, type: text }
+          - { name: aefingar, label: Æfingar (ein lína hver), type: string, list: true }
+          - { name: vollur, label: Völlur, type: string }
+      - name: ungmennahopar
+        label: Aldurshópar ungmenna
+        type: object
+        list: true
+        fields:
+          - { name: hopur, label: Aldurshópur, type: string }
+          - { name: faedingarar, label: Fæðingarár, type: string }
+          - { name: lysing, label: Lýsing, type: text }
+          - { name: aefingar, label: Æfingar (ein lína hver), type: string, list: true }
+          - { name: skraning, label: Skráningarslóð (Abler), type: string }
+
+  - name: verdskra
+    label: Verðskrá
+    type: file
+    path: src/data/prices.json
+    format: json
+    fields:
+      - name: fullordnir
+        label: Áskriftir fullorðinna
+        type: object
+        list: true
+        fields:
+          - { name: heiti, label: Heiti, type: string }
+          - { name: verd, label: Verð, type: string }
+          - { name: eining, label: Eining, type: string }
+          - { name: lysing, label: Lýsing, type: text }
+          - { name: skilmalar, label: Skilmálar, type: text }
+          - { name: til_stadfestingar, label: Til staðfestingar (gult merki), type: boolean }
+          - { name: athugasemd, label: Athugasemd við staðfestingu, type: string }
+      - name: byrjendanamskeid
+        label: Byrjendanámskeið
+        type: object
+        fields:
+          - { name: heiti, label: Heiti, type: string }
+          - { name: verd, label: Verð, type: string }
+          - { name: lysing, label: Lýsing, type: text }
+          - { name: thjalfari, label: Þjálfari, type: string }
+      - name: ungmenni
+        label: Ungmennastarf
+        type: object
+        fields:
+          - { name: onn, label: Önn sem verðin gilda fyrir, type: string }
+          - { name: til_stadfestingar, label: Til staðfestingar (gult merki), type: boolean }
+          - { name: athugasemd, label: Athugasemd við staðfestingu, type: string }
+          - name: hopar
+            label: Verð eftir aldurshópum
+            type: object
+            list: true
+            fields:
+              - { name: hopur, label: Aldurshópur, type: string }
+              - { name: verd, label: Verð á önn, type: string }
+      - { name: fristundastyrkir, label: Frístundastyrkir (sveitarfélög), type: string, list: true }
+      - { name: systkinaafslattur, label: Systkinaafsláttur, type: string }
+
+  - name: mot
+    label: Mót og keppnisferðir
+    type: file
+    path: src/data/mot.json
+    format: json
+    fields:
+      - { name: onn, label: Önn, type: string }
+      - { name: heimild, label: Heimild, type: string }
+      - name: mot
+        label: Viðburðir
+        type: object
+        list: true
+        fields:
+          - { name: dags, label: Dagsetning (texti), type: string }
+          - { name: heiti, label: Heiti, type: string }
+          - { name: lysing, label: Lýsing, type: text }
+          - name: tegund
+            label: Tegund
+            type: select
+            options:
+              values: [Mót, Keppnisferð, Viðburður]
+          - { name: til_stadfestingar, label: Til staðfestingar (gult merki), type: boolean }
+          - { name: athugasemd, label: Athugasemd við staðfestingu, type: string }
+
+  - name: felagid
+    label: Upplýsingar um félagið
+    type: file
+    path: src/data/site.json
+    format: json
+    fields:
+      - { name: nafn, label: Nafn, type: string }
+      - { name: stytting, label: Stytting, type: string }
+      - { name: heimilisfang, label: Heimilisfang, type: string }
+      - { name: simi, label: Sími, type: string }
+      - { name: netfang, label: Netfang, type: string }
+      - { name: netfang_stjorn, label: Netfang stjórnar, type: string }
+      - { name: netfang_motstjori, label: Netfang mótstjóra, type: string }
+      - { name: netfang_gfk, label: Netfang GFK, type: string }
+      - { name: skraning_almenn, label: Almenn skráning (Abler), type: string }
+      - { name: skraning_vbc_hnappur, label: Eldri skráningarhlekkur, type: string }
+      - { name: skraning_motarod_ungmenna, label: Skráning í BJJMU, type: string }
+      - { name: smoothcomp, label: Smoothcomp, type: string }
+      - { name: facebook, label: Facebook, type: string }
+      - { name: instagram, label: Instagram, type: string }

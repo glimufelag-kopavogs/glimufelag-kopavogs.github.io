@@ -1,0 +1,120 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import prices from '../data/prices.json';
+import schedule from '../data/schedule.json';
+const posts = (await getCollection('frettir', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+const fmt = (d: Date) => d.toLocaleDateString('is-IS', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+const bn = prices.byrjendanamskeid;
+// Reiknað úr æfingatöflunni
+const bjjTimar = schedule.fullordnir.length + schedule.ungmenni.length;
+const hopar = [
+  { heiti: 'Byrjendur', lina: 'Þri og fim kl. 19:30', href: '/verdskra#byrjendanamskeid' },
+  { heiti: 'Fullorðnir', lina: 'Gi og NoGi, alla daga', href: '/aefingatafla' },
+  { heiti: '3–17 ára', lina: 'Fjórir aldurshópar', href: '/ungmennastarf' },
+  { heiti: 'Afrekshópur', lina: 'Eftir boði þjálfara', href: '/ungmennastarf#afrekshopur' },
+];
+---
+<Base title="Forsíða">
+  <section class="hero">
+    <div class="container">
+      <h1>Uppgjafarglíma fyrir <span class="hl">alla</span>.</h1>
+      <p class="lead">Brasilískt jiu jitsu í Kópavogi. Gi og NoGi.</p>
+      <div class="btn-row">
+        <a class="btn btn-accent" href="/hafa-samband#skraning">Skráðu þig</a>
+        <a class="btn btn-ghost" href="/aefingatafla">Stundatafla</a>
+      </div>
+      <div class="stats">
+        <div><div class="stat">{bjjTimar}</div><div class="stat-label">tímar á viku</div></div>
+        <div><div class="stat">3–17</div><div class="stat-label">ára krakkar</div></div>
+        <div><div class="stat">2</div><div class="stat-label">glímuvellir</div></div>
+        <div><div class="stat">7</div><div class="stat-label">æfingasvæði</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><div class="photo photo-wide" aria-hidden="true">Mynd</div></div>
+
+  <section class="section">
+    <div class="container">
+      <p class="values">Árangur. <span>Samfélag.</span> Gæði.</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2>Finndu hópinn þinn</h2>
+      <div class="grid grid-4 cards-compact">
+        {hopar.map((h) => (
+          <a class="card group-card" href={h.href}>
+            <h3>{h.heiti}</h3>
+            <div class="meta">{h.lina}</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <h2>Byrjaðu hér</h2>
+        <p class="line">Byrjendanámskeið: 4 vikur, {bn.verd}</p>
+        <a class="btn btn-accent" href="/hafa-samband#skraning">Skráðu þig</a>
+      </div>
+      <div class="photo" aria-hidden="true">Mynd</div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2>Stigahæst í Dublin</h2>
+      <p class="line">Grappling Industries Dublin 2026</p>
+      <div class="grid grid-4 cards-compact">
+        <div class="card"><div class="stat">20</div><div class="stat-label">gull</div></div>
+        <div class="card"><div class="stat">8</div><div class="stat-label">silfur</div></div>
+        <div class="card"><div class="stat">8</div><div class="stat-label">brons</div></div>
+        <div class="card"><div class="stat">1.</div><div class="stat-label">stigahæsta lið</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <h2>Spurt og svarað</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Þarf ég reynslu?</summary>
+          <p>Nei, byrjendanámskeiðið er gert fyrir algjöra byrjendur.</p>
+        </details>
+        <details>
+          <summary>Er þetta hættulegt?</summary>
+          <p>Engin högg eða spörk, og bannað að beygla fingur eða pota í augu.</p>
+        </details>
+        <details>
+          <summary>Frá hvaða aldri?</summary>
+          <p>Krakkar geta byrjað 3 ára.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2>Nýjast</h2>
+      <div class="news-list">
+        {posts.map((p) => (
+          <a class="news-item" href={`/frettir/${p.id}/`}>
+            <time datetime={p.data.date.toISOString().slice(0, 10)}>{fmt(p.data.date)}</time>
+            <h3>{p.data.title}</h3>
+          </a>
+        ))}
+      </div>
+      <a class="btn btn-ghost" href="/frettir/" style="margin-top:28px">Allar fréttir</a>
+    </div>
+  </section>
+</Base>
