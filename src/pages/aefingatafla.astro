@@ -25,4 +25,28 @@ import schedule from '../data/schedule.json';
       <ul class="notes">{schedule.athugasemdir_ungmenni.map((a) => <li>{a}</li>)}</ul>
     </div>
   </section>
+  <script is:inline>
+    const dagar = ['Sunnudagur','Mánudagur','Þriðjudagur','Miðvikudagur','Fimmtudagur','Föstudagur','Laugardagur'];
+    const wd = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(new Intl.DateTimeFormat('en-GB', { timeZone: 'Atlantic/Reykjavik', weekday: 'short' }).format(new Date()));
+    const idag = dagar[wd];
+    document.querySelectorAll('.wk').forEach((wk) => {
+      const days = [...wk.querySelectorAll('.wk-day')];
+      let i = Math.max(0, days.findIndex((d) => d.getAttribute('aria-label') === idag));
+      days[i]?.classList.add('wk-today');
+      days[i]?.querySelector('.wk-head')?.insertAdjacentHTML('beforeend', '<span class="today-tag">Í dag</span>');
+      const nav = document.createElement('div');
+      nav.className = 'wk-flip';
+      nav.innerHTML = '<button type="button" aria-label="Fyrri dagur">‹</button><strong></strong><button type="button" aria-label="Næsti dagur">›</button>';
+      wk.before(nav);
+      const show = () => {
+        days.forEach((d, k) => d.classList.toggle('wk-cur', k === i));
+        nav.querySelector('strong').textContent = days[i].getAttribute('aria-label') + (days[i].classList.contains('wk-today') ? ' · í dag' : '');
+      };
+      const [prev, next] = nav.querySelectorAll('button');
+      prev.onclick = () => { i = (i + days.length - 1) % days.length; show(); };
+      next.onclick = () => { i = (i + 1) % days.length; show(); };
+      wk.classList.add('wk-flippable');
+      show();
+    });
+  </script>
 </Base>

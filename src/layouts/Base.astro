@@ -40,6 +40,7 @@ const fullTitle = title === 'Forsíða' ? `${site.nafn} (${site.stytting})` : `$
           <img src="/gfk-logo-white.svg" alt="Glímufélag Kópavogs (GFK)" width="150" height="46" />
           <span class="sr-only">– forsíða</span>
         </a>
+        <a class="btn btn-accent mobile-tafla" href="/aefingatafla">Æfingatafla</a>
         <details class="nav-toggle">
           <summary aria-label="Valmynd"><span></span><span></span><span></span></summary>
           <nav class="nav-mobile" aria-label="Aðalvalmynd (farsími)">
@@ -48,7 +49,7 @@ const fullTitle = title === 'Forsíða' ? `${site.nafn} (${site.stytting})` : `$
           </nav>
         </details>
         <nav class="nav-desktop" aria-label="Aðalvalmynd">
-          {nav.slice(1).map((n) => <a href={n.href} class={isActive(n.href) ? 'active' : ''}>{n.label}</a>)}
+          {nav.slice(1).map((n) => <a href={n.href} class={[isActive(n.href) ? 'active' : '', n.href === '/aefingatafla' ? 'nav-tafla' : ''].join(' ')}>{n.label}</a>)}
           <a class="btn btn-accent btn-sm" href="/hafa-samband#skraning">Skráðu þig</a>
         </nav>
       </div>

@@ -45,7 +45,22 @@ const mot = motData.mot.map((m) => ({ ...m, endir: endir(m.dags) }));
     </div>
   </section>
 
-  <section class="section">
+  <section class="section idag" id="aefingar-i-dag">
+    <div class="container">
+      <div class="idag-head">
+        <h2 id="naestu-titill">Æfingar í dag</h2>
+        <div class="idag-filter" role="group" aria-label="Sía eftir hópi">
+          <button type="button" class="is-on" data-f="">Allir</button>
+          <button type="button" data-f="Fullorðnir">Fullorðnir</button>
+          <button type="button" data-f="Krakkar">Krakkar 3–17</button>
+        </div>
+      </div>
+      <div class="idag-list" id="naestu-aefingar"><p class="muted">Sjá <a href="/aefingatafla">æfingatöflu</a>.</p></div>
+      <a class="btn btn-accent btn-big" href="/aefingatafla">Sjá alla æfingatöfluna →</a>
+    </div>
+  </section>
+
+  <section class="section section-alt">
     <div class="container">
       <h2>Finndu hópinn þinn</h2>
       <div class="grid grid-4 cards-compact">
@@ -60,13 +75,6 @@ const mot = motData.mot.map((m) => ({ ...m, endir: endir(m.dags) }));
     </div>
   </section>
 
-  <section class="section section-alt">
-    <div class="container">
-      <h2 id="naestu-titill">Næstu æfingar</h2>
-      <div class="news-list" id="naestu-aefingar"><p class="muted">Sjá <a href="/aefingatafla">æfingatöflu</a>.</p></div>
-      <a class="btn btn-ghost" href="/aefingatafla" style="margin-top:28px">Öll æfingataflan</a>
-    </div>
-  </section>
 
   <section class="section">
     <div class="container">
@@ -117,12 +125,19 @@ const mot = motData.mot.map((m) => ({ ...m, endir: endir(m.dags) }));
       el.innerHTML = '';
       for (const t of listi) {
         const a = document.createElement('a');
-        a.className = 'news-item'; a.href = '/aefingatafla';
-        a.innerHTML = `<time>${t.fra}–${t.til}</time><div><h3></h3><p></p></div>`;
-        a.querySelector('h3').textContent = `${t.hopur}: ${t.h}`;
-        a.querySelector('p').textContent = t.t;
+        a.className = 'idag-row' + (t.hopur === 'Fullorðnir' ? ' g-full' : ' g-krakkar'); a.href = '/aefingatafla';
+        a.dataset.hopur = t.hopur;
+        a.innerHTML = `<span class="idag-time"></span><span class="idag-name"></span><span class="idag-tags"><span class="idag-g"></span><span class="tg"></span></span>`;
+        a.querySelector('.idag-time').textContent = `${t.fra}–${t.til}`;
+        a.querySelector('.idag-name').textContent = t.h;
+        a.querySelector('.idag-g').textContent = t.hopur === 'Krakkar' ? 'Krakkar 3–17' : t.hopur;
+        a.querySelector('.tg').textContent = t.t;
         el.appendChild(a);
       }
+      document.querySelectorAll('.idag-filter button').forEach((b) => b.addEventListener('click', () => {
+        document.querySelectorAll('.idag-filter button').forEach((x) => x.classList.toggle('is-on', x === b));
+        el.querySelectorAll('.idag-row').forEach((r) => { r.hidden = !!b.dataset.f && r.dataset.hopur !== b.dataset.f; });
+      }));
     }
     let synileg = 0;
     document.querySelectorAll('.mot-item').forEach((m) => {
